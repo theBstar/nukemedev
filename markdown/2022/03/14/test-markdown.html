@@ -1,0 +1,1587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Learn Typescript in 15 minutes | Nukemedev</title>
+<meta name="generator" content="Jekyll v4.2.2">
+<meta property="og:title" content="Learn Typescript in 15 minutes">
+<meta name="author" content="Nukemedev">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Nukemedev nukes a dev with technical knowledge and skills. It allows a software development engineer or an aspiring one to learn technical skills faster and easier. Currently it has a typescript tutorial targeted towards javascript developer which allows them to get started in a few minutes with typescript.">
+<meta property="og:description" content="Nukemedev nukes a dev with technical knowledge and skills. It allows a software development engineer or an aspiring one to learn technical skills faster and easier. Currently it has a typescript tutorial targeted towards javascript developer which allows them to get started in a few minutes with typescript.">
+<link rel="canonical" href="http://nukemedev.com//jekyll-theme-yat/markdown/2022/03/14/test-markdown.html">
+<meta property="og:url" content="http://nukemedev.com//jekyll-theme-yat/markdown/2022/03/14/test-markdown.html">
+<meta property="og:site_name" content="Nukemedev">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2022-03-14T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Learn Typescript in 15 minutes">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Nukemedev"},"dateModified":"2022-03-14T00:00:00+00:00","datePublished":"2022-03-14T00:00:00+00:00","description":"Nukemedev nukes a dev with technical knowledge and skills. It allows a software development engineer or an aspiring one to learn technical skills faster and easier. Currently it has a typescript tutorial targeted towards javascript developer which allows them to get started in a few minutes with typescript.","headline":"Learn Typescript in 15 minutes","mainEntityOfPage":{"@type":"WebPage","@id":"http://nukemedev.com//jekyll-theme-yat/markdown/2022/03/14/test-markdown.html"},"url":"http://nukemedev.com//jekyll-theme-yat/markdown/2022/03/14/test-markdown.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="shortcut icon" href="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/jekyll-theme-yat/assets/css/main.css">
+  <script src="/jekyll-theme-yat/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="http://nukemedev.com//jekyll-theme-yat/feed.xml" title="Nukemedev">
+<script>
+  function initAnalytics() {
+    console.log('hhh')
+    const s = document.createElement('script');
+    const head = document.getElementsByTagName('script')[0];
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-VRFZCN9ZPM';
+    head.parentNode.insertBefore(s, head);
+    s.onload = () => {
+      window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-VRFZCN9ZPM');
+      };
+  }
+  window.addEventListener("load", initAnalytics);
+</script>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/jekyll-theme-yat/">
+  <img class="site-favicon" title="Nukemedev" src="" onerror="this.style.display='none'">
+  Nukemedev
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/jekyll-theme-yat/">HOME</a><a class="page-link" href="/jekyll-theme-yat/archives.html">ARCHIVES</a>
+
+
+
+
+
+
+
+
+
+<span class="page-link">
+
+
+
+<div id="google_translate_element" style="display: none;">
+</div>
+
+<span class="ct-language">
+  <ul class="list-unstyled ct-language-dropdown">
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="en">
+          
+          <img src="https://cdn.countryflags.com/thumbs/united-states-of-america/flag-400.png" title="English">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="hi">
+          
+          <img src="https://cdn.countryflags.com/thumbs/india/flag-400.png" title="Hindi">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="fr">
+          
+          <img src="https://cdn.countryflags.com/thumbs/france/flag-400.png" title="French">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="zh-CN">
+          
+          <img src="https://cdn.countryflags.com/thumbs/china/flag-400.png" title="Chinese(Simple)">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ja">
+          
+          <img src="https://cdn.countryflags.com/thumbs/japan/flag-400.png" title="Japanese">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ko">
+          
+          <img src="https://cdn.countryflags.com/thumbs/south-korea/flag-400.png" title="Korean">
+          
+        </a>
+      </li>
+    
+  </ul>
+</span>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    autoDisplay: false,
+    layout: google.translate.TranslateElement.InlineLayout.VERTICAL
+  }, 'google_translate_element');
+
+  // Links to cross-origin destinations are unsafe
+  var gll = document.getElementsByClassName('goog-logo-link')[0];
+  if (gll) {
+    gll.setAttribute('rel', 'noopener');
+  }
+
+  function restoreLang() {
+    var iframe = document.getElementsByClassName('goog-te-banner-frame')[0];
+    if (!iframe) return;
+
+    var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+    var restore_el = innerDoc.getElementsByTagName("button");
+
+    for (var i = 0; i < restore_el.length; i++) {
+      if (restore_el[i].id.indexOf("restore") >= 0) {
+        restore_el[i].click();
+        var close_el = innerDoc.getElementsByClassName("goog-close-link");
+        close_el[0].click();
+        return;
+      }
+    }
+  }
+
+  function triggerHtmlEvent(element, eventName) {
+    var event;
+    if (document.createEvent) {
+      event = document.createEvent('HTMLEvents');
+      event.initEvent(eventName, true, true);
+      element.dispatchEvent(event);
+    } else {
+      event = document.createEventObject();
+      event.eventType = eventName;
+      element.fireEvent('on' + event.eventType, event);
+    }
+  }
+
+  var googleCombo = document.querySelector("select.goog-te-combo");
+  var langSelect = document.querySelector('.ct-language');
+  langSelect.addEventListener('click', function(event) {
+    if (!event.target) {
+      return;
+    }
+
+    var selected = document.querySelector('.ct-language .ct-language-selected');
+    if (selected) {
+      selected.classList.remove('ct-language-selected');
+    }
+
+    var target = event.target;
+    while (target && target !== langSelect ) {
+      if (target.matches('.lang-select')) {
+        break;
+      }
+      target = target.parentElement;
+    }
+
+    if (target && target.matches('.lang-select')) {
+      var lang = target.getAttribute('data-lang');
+      if (googleCombo.value == lang) {
+        restoreLang();
+      } else {
+        target.parentElement.classList.add('ct-language-selected');
+        googleCombo.value = lang;
+        triggerHtmlEvent(googleCombo, 'change');
+      }
+    }
+
+    event.preventDefault();
+  });
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</span>
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('manual' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">Learn Typescript in 15 minutes</h1>
+  <h2 class="post-subtitle">Typescript for a developer</h2>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2022-03-14T00:00:00+00:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Mar 14, 2022
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 17 mins</span>
+  </p>
+<div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#typescript">#typescript</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#ts">#ts</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#web%20development">#web development</a>
+</div></header>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <hr>
+
+<p>After reading this article you will know more than enough typescript to start writing production applications, assuming you already know javascript. This article is framework agnostic and covers the core of the language. This can be used as a Typescript quick starter or a quick refresher. You can find the code for this article in <a href="https://codesandbox.io/s/learn-typescript-in-10-minutes-0s50q?file=/src/index.ts">this code-sandbox</a>.</p>
+
+<h2 id="what-and-why-of-typescript">What and Why of Typescript</h2>
+
+<p>Typescript is a superset of Javascript. This means whatever javascript you write is still valid typescript. How is typescript is different then? Typescript extends javascript by adding types, features which are yet not in javascript and a few other utilities. End of the day typescript compiles to javascript. In simple even you write typescript, javascript is what shipped to the browser.</p>
+
+<h3 id="why-do-we-even-need-typescript-javascript-isnt-enough">Why do we even need typescript, javascript isn’t enough?</h3>
+
+<p>Let me explain through an example:
+You wrote a sum function:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">sum</span> <span class="o">=</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span>
+</code></pre></div></div>
+
+<p>Whenever you call the sum function with two number arguments it will work fine. But, what if you pass a string and a number or both strings or even number and an object? This is not a problem if your project is just a couple of lines of codes and only one or two people are working on it. But what if your product is a few thousand lines of code or even be it in some hundreds. Add a few more people working on the project and using the sum function. All of them may not know the internals of the function. Now one of them can call the function with wrong types of arguments. This will result in unexpected results. May lead to terrible experience if this gets pushed to production.</p>
+
+<p>The issue in the scenario above can be caught earlier with typescript. Typescript will complain you if you are trying to pass a string to a declaration of types of number.</p>
+
+<p>Let us see the equivalent typescript declaration of sum function in typescript</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">sum</span> <span class="o">=</span> <span class="p">(</span><span class="nx">a</span><span class="p">:</span> <span class="nx">number</span><span class="p">,</span> <span class="nx">b</span><span class="p">:</span> <span class="nx">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span>
+<span class="c1">// Now if you try to pass a non-number value to a or b typescript will complain</span>
+<span class="kd">const</span> <span class="nx">s1</span> <span class="o">=</span> <span class="nx">sum</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="c1">// works</span>
+<span class="kd">const</span> <span class="nx">s2</span> <span class="o">=</span> <span class="nx">sum</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="dl">'</span><span class="s1">33</span><span class="dl">'</span><span class="p">)</span>
+<span class="c1">// Error</span>
+<span class="c1">// Argument of type '"33"' is not assignable to parameter of type 'number'</span>
+</code></pre></div></div>
+
+<p>Typescript requires some setup and config to work for a real project but to follow this article you can use either of the following links</p>
+
+<ul>
+  <li><a href="https://codesandbox.io/s/learn-typescript-in-10-minutes-0s50q?file=/src/index.ts">Codesandbox link (Contains all code examples, Fork the sandbox and play around)</a></li>
+  <li>https://www.typescriptlang.org/play</li>
+</ul>
+
+<h2 id="types-101-the-basics-of-types-in-typescript">Types 101: the basics of types in typescript</h2>
+
+<p>In a simple term, You can think of typescript types as the type of the variable. It can be defined explicitly (by you) or can be inferred implicitly from the assignment (by the compiler).</p>
+
+<p>Syntax (explicit types):</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// declaration:type = assignmet; (assignment is optional for let, var)</span>
+<span class="c1">// const someConst: string = 'some const';</span>
+<span class="c1">// let someNumber:number = 44;</span>
+<span class="c1">// examples:</span>
+<span class="c1">// here the type of num varialbe is number, you cannot assign other types to the variable num.</span>
+<span class="kd">let</span> <span class="nx">num</span><span class="p">:</span> <span class="nx">number</span> <span class="o">=</span> <span class="mi">44</span>
+<span class="c1">// valid</span>
+<span class="nx">num</span> <span class="o">=</span> <span class="mi">8595</span>
+<span class="c1">// invalid</span>
+<span class="nx">num</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">333</span><span class="dl">'</span>
+<span class="c1">// valid</span>
+<span class="nx">num</span> <span class="o">=</span> <span class="mf">3445.88</span>
+<span class="c1">// One more example</span>
+<span class="kd">let</span> <span class="nx">str</span><span class="p">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">hello, I can only be a string</span><span class="dl">'</span>
+<span class="c1">// valid</span>
+<span class="nx">str</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Just another string</span><span class="dl">'</span>
+<span class="c1">// invalid</span>
+<span class="nx">str</span> <span class="o">=</span> <span class="mi">22</span>
+<span class="c1">// one more exaple with only declaration but no assignmet</span>
+<span class="kd">let</span> <span class="nx">someNumber</span><span class="p">:</span> <span class="nx">number</span>
+<span class="c1">// valid</span>
+<span class="nx">someNumber</span> <span class="o">=</span> <span class="mi">55</span>
+<span class="c1">// invalid</span>
+<span class="nx">someNumber</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">I am not a number</span><span class="dl">'</span>
+<span class="c1">// invalid</span>
+<span class="nx">someNumber</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">333</span><span class="dl">'</span>
+<span class="c1">// valid</span>
+<span class="nx">someNumber</span> <span class="o">=</span> <span class="kc">Infinity</span>
+</code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Syntax</span> <span class="p">(</span><span class="nx">Implicit</span> <span class="nx">types</span><span class="p">):</span>
+<span class="c1">// following line declares a variable implicitNum, type of number and assigns 44 to it. The value assigned to it is a number, so typescript automatically determines the type of the variable. This is the type inference.</span>
+<span class="kd">let</span> <span class="nx">implicitNum</span> <span class="o">=</span> <span class="mi">44</span><span class="p">;</span>
+<span class="c1">// valid</span>
+<span class="nx">implicitNum</span> <span class="o">=</span> <span class="mi">66</span><span class="p">;</span>
+<span class="c1">// invalid</span>
+<span class="nx">implicitNum</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Not allowed</span><span class="dl">'</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="as-we-are-familiar-with-the-types-now-let-us-learn-the-most-basic-types-in-typescript">As we are familiar with the types, now let us learn the most basic types in typescript:</h3>
+
+<ul>
+  <li>Boolean</li>
+  <li>Number</li>
+  <li>String</li>
+  <li>Array</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Boolean</span>
+<span class="kd">const</span> <span class="nx">alwaysTrue</span><span class="p">:</span> <span class="nx">boolean</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="kd">let</span> <span class="nx">onlyBool</span><span class="p">:</span> <span class="nx">boolean</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="c1">// valid</span>
+<span class="nx">onlyBool</span> <span class="o">=</span> <span class="kc">false</span>
+<span class="c1">// invalid</span>
+<span class="nx">onlyBool</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">true</span><span class="dl">'</span>
+<span class="c1">// Following operation is invalid because + operator is only defined for string and numbers</span>
+<span class="kd">const</span> <span class="nx">addition</span> <span class="o">=</span> <span class="nx">alwaysTrue</span> <span class="o">+</span> <span class="nx">onlyBool</span>
+<span class="c1">// Number</span>
+<span class="kd">const</span> <span class="nx">againSomeNum</span> <span class="o">=</span> <span class="mi">55</span>
+<span class="kd">let</span> <span class="nx">someNumberAgain</span> <span class="o">=</span> <span class="mi">66</span>
+<span class="c1">// invalid</span>
+<span class="nx">someNumberAgain</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">44</span><span class="dl">'</span>
+<span class="c1">// valid</span>
+<span class="nx">someNumberAgain</span> <span class="o">=</span> <span class="mi">365</span>
+<span class="c1">// String</span>
+<span class="kd">let</span> <span class="nx">someStrAgain</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Yes, this is a string</span><span class="dl">'</span>
+<span class="c1">// valid</span>
+<span class="nx">someStrAgain</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">ok, valid</span><span class="dl">'</span>
+<span class="c1">// invalid</span>
+<span class="nx">someStrAgain</span> <span class="o">=</span> <span class="mi">4345</span>
+<span class="nx">someStrAgain</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="c1">// Array</span>
+<span class="c1">// There are two ways to declare an array</span>
+<span class="c1">// normal array syntax --</span>
+<span class="kd">const</span> <span class="nx">someArray</span><span class="p">:</span> <span class="nx">number</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="c1">// valid</span>
+<span class="nx">someArray</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="mi">34546</span><span class="p">)</span>
+<span class="c1">// invalid</span>
+<span class="nx">someArray</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="dl">'</span><span class="s1">ok</span><span class="dl">'</span><span class="p">)</span>
+<span class="nx">someArray</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+<span class="c1">// Generic array syntax --</span>
+<span class="kd">const</span> <span class="nx">oneMoreArray</span><span class="p">:</span> <span class="nb">Array</span><span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="mi">34</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">21</span><span class="p">]</span>
+<span class="c1">// valid</span>
+<span class="nx">oneMoreArray</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="mi">4354</span><span class="p">)</span>
+<span class="nx">oneMoreArray</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="mf">34.234</span><span class="p">)</span>
+<span class="c1">// invalid</span>
+<span class="nx">oneMoreArray</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="dl">'</span><span class="s1">not valid!</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="some-more-basic-types-in-typescript">Some more basic types in typescript</h3>
+
+<h4 id="any">Any</h4>
+
+<p>It is the easiest way to get started with typescript. It is a supertype to all type in typescript. Any is a way to opt-out of type checking. So, you can assign a value of any type to this type of variable and vice-versa.
+This can be the only friend of you when you are just trying to get started with typescript. But don’t stay around with the guy, as he is going to spoil you. Other types are more loyal and hence trustworthy.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Any</span>
+<span class="kd">let</span> <span class="nx">assignAnything</span><span class="p">:</span><span class="nx">any</span> <span class="o">=</span> <span class="mi">44</span><span class="p">;</span>
+<span class="nx">assignAnything</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Assign string</span><span class="dl">'</span><span class="p">;</span>
+<span class="nx">assignAnything</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<span class="nx">assignAnything</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="nx">assignAnything</span> <span class="o">=</span> <span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">44</span><span class="p">];</span>
+<span class="kd">let</span> <span class="nx">arrayOfAnyType</span><span class="p">:</span> <span class="nx">any</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">454</span><span class="p">,</span> <span class="mi">435</span><span class="p">,</span> <span class="dl">'</span><span class="s1">string also</span><span class="dl">'</span><span class="p">,</span> <span class="kc">false</span><span class="p">];</span>
+<span class="c1">// You can even access properties on an non object variable</span>
+<span class="c1">// Even the code below fails, typescript doesn't complain</span>
+<span class="nx">assignAnything</span><span class="p">.</span><span class="nx">sayHello</span><span class="p">();</span>
+<span class="c1">// Assin to any type of variable Quite risky, right?</span>
+<span class="kd">let</span> <span class="nx">strictlyNumber</span><span class="p">:</span><span class="nx">number</span> <span class="o">=</span> <span class="mi">66</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">anAnyTypeOfVariable</span><span class="p">:</span> <span class="nx">any</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Not a number, but can be assigned to number</span><span class="dl">'</span><span class="p">;</span>
+<span class="c1">// valid</span>
+<span class="nx">strictlyNumber</span> <span class="o">=</span> <span class="nx">anAnyTypeOfVariable</span><span class="p">;</span>
+<span class="nx">Unknown</span>
+<span class="nx">Unknown</span> <span class="nx">type</span> <span class="nx">is</span> <span class="nx">similar</span> <span class="nx">to</span> <span class="nx">any</span><span class="p">,</span> <span class="nx">you</span> <span class="nx">can</span> <span class="nx">assign</span> <span class="nx">any</span> <span class="nx">type</span> <span class="k">of</span> <span class="nx">value</span> <span class="nx">to</span> <span class="nx">an</span> <span class="nx">unknown</span> <span class="nx">type</span> <span class="k">of</span> <span class="nx">variable</span><span class="p">.</span> <span class="nx">But</span> <span class="nx">the</span> <span class="nx">difference</span> <span class="nx">between</span> <span class="nx">any</span> <span class="nx">and</span> <span class="nx">unknown</span> <span class="nx">is</span> <span class="nx">that</span> <span class="nx">you</span> <span class="nx">can</span><span class="dl">'</span><span class="s1">t assign an unknown type of value to other types of variables except to type any.
+// Unknown
+let unknownVariable:unknown = 44;
+assignAnything = </span><span class="dl">'</span><span class="nx">Assign</span> <span class="nx">string</span><span class="dl">'</span><span class="s1">;
+assignAnything = true;
+assignAnything = false;
+assignAnything = [35, 45, 44];
+let unknownArray: unknown[] = [454, 435, </span><span class="dl">'</span><span class="nx">string</span> <span class="nx">also</span><span class="dl">'</span><span class="s1">, false];
+// You cannot access properties on an unknown type of vlaue
+// invalid
+unknownVariable.sayHello();
+// Cannot assign to other types
+let someStrictNumber:number = 66;
+const unknownValueAgain: unknown = </span><span class="dl">'</span><span class="nx">Not</span> <span class="nx">a</span> <span class="nx">number</span><span class="p">,</span> <span class="nx">but</span> <span class="nx">can</span> <span class="nx">be</span> <span class="nx">assigned</span> <span class="nx">to</span> <span class="nx">number</span><span class="dl">'</span><span class="s1">;
+// invalid
+someStrictNumber = unknownValueAgain;
+// but can assign to any type
+let someAnyTypeVariable: any = [34, 5];
+let someUnknownVariable:unknown = </span><span class="dl">'</span><span class="nx">unknown</span> <span class="nx">value</span><span class="dl">'</span><span class="s1">;
+// valid
+someAnyTypeVariable = someUnknownVariable;
+</span></code></pre></div></div>
+
+<h4 id="null-and-undefined">Null and Undefined</h4>
+
+<p>The behaviour of Null and Undefined types depends on a flag ( - strictNullCheck) passed to the compiler. It is recommended to set this flag to true. When the flag is not set Null and Undefined are sub-types of all other types. You can assign them to any variables of all other types. But when the ( - strictNullCheck) flag is set Null and Undefined can be assigned only to their respective type, any and unknown types. And undefined can also be assigned to void type.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Null</span>
+<span class="kd">let</span> <span class="nx">nullValue</span><span class="p">:</span> <span class="kc">null</span> <span class="o">=</span> <span class="kc">null</span>
+<span class="c1">// ivalid</span>
+<span class="nx">nullValue</span> <span class="o">=</span> <span class="mi">33</span>
+<span class="kd">let</span> <span class="nx">someNumberA</span><span class="p">:</span> <span class="nx">number</span> <span class="o">=</span> <span class="mi">333</span>
+<span class="nx">someNumberA</span> <span class="o">=</span> <span class="nx">nullValue</span>
+<span class="c1">// valid</span>
+<span class="kd">let</span> <span class="nx">anyValueA</span><span class="p">:</span> <span class="nx">any</span> <span class="o">=</span> <span class="mi">354</span>
+<span class="nx">anyValueA</span> <span class="o">=</span> <span class="nx">nullValue</span>
+<span class="kd">let</span> <span class="nx">unknowValueA</span><span class="p">:</span> <span class="nx">unknown</span> <span class="o">=</span> <span class="mi">3543</span>
+<span class="nx">unknowValueA</span> <span class="o">=</span> <span class="nx">nullValue</span>
+<span class="c1">// Undefined</span>
+<span class="kd">let</span> <span class="nx">undefinedValueA</span><span class="p">:</span> <span class="kc">undefined</span> <span class="o">=</span> <span class="kc">undefined</span>
+<span class="c1">// invalid</span>
+<span class="nx">undefinedValueA</span> <span class="o">=</span> <span class="mi">33</span>
+<span class="kd">let</span> <span class="nx">someNumberB</span><span class="p">:</span> <span class="nx">number</span> <span class="o">=</span> <span class="mi">333</span>
+<span class="nx">someNumberB</span> <span class="o">=</span> <span class="nx">undefinedValueA</span>
+<span class="c1">// valid</span>
+<span class="kd">let</span> <span class="nx">anyValueB</span><span class="p">:</span> <span class="nx">any</span> <span class="o">=</span> <span class="mi">354</span>
+<span class="nx">anyValueA</span> <span class="o">=</span> <span class="nx">undefinedValueA</span>
+<span class="kd">let</span> <span class="nx">unknowValueB</span><span class="p">:</span> <span class="nx">unknown</span> <span class="o">=</span> <span class="mi">3543</span>
+<span class="nx">unknowValueA</span> <span class="o">=</span> <span class="nx">undefinedValueA</span>
+</code></pre></div></div>
+
+<h4 id="void">Void</h4>
+
+<p>Type Void is used for declaring return type of functions which returns nothing or void but finishes execution.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// The example will be more clear once we learn type function. Here, the function greets return type is void. In simple its return value doesn't matter.</span>
+<span class="kd">function</span> <span class="nx">greet</span><span class="p">(</span><span class="nx">name</span><span class="p">:</span> <span class="nx">string</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`hello </span><span class="p">${</span><span class="nx">name</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+  <span class="c1">// even this function is returning nothing explicitly, it is returning undefined implicityly. We already know undefined is assignable to void. So, this is valid</span>
+<span class="p">}</span>
+<span class="c1">// void keyword in javascript discards the value returned. so the following declaration is totaly valid</span>
+<span class="kd">function</span> <span class="nx">discardTheReturnValue</span><span class="p">(</span><span class="nx">name</span><span class="p">:</span> <span class="nx">string</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`hello </span><span class="p">${</span><span class="nx">name</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+  <span class="k">return</span> <span class="k">void</span> <span class="mi">333</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="never">Never</h4>
+
+<p>Never type is used to declare the return type of functions which never returns (runs infinitely or throws an error). Never can be assigned to any type but no type can be assigned to never (even any is not assignable to never).</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Never</span>
+<span class="c1">// Both functions below never returns</span>
+<span class="kd">function</span> <span class="nx">throwSomeError</span><span class="p">():</span><span class="nx">never</span> <span class="p">{</span>
+<span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">I am only throwing error</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">neverReturn</span><span class="p">():</span><span class="nx">never</span> <span class="p">{</span>
+<span class="k">while</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">}</span>
+<span class="nx">Enum</span>
+<span class="nx">Enums</span> <span class="nx">are</span> <span class="nx">a</span> <span class="nx">way</span> <span class="nx">to</span> <span class="nx">give</span> <span class="nx">names</span> <span class="nx">and</span> <span class="nx">organise</span> <span class="nx">numeric</span> <span class="nx">values</span><span class="p">.</span> <span class="nx">You</span> <span class="nx">can</span> <span class="nx">define</span> <span class="nx">an</span> <span class="kr">enum</span> <span class="kd">with</span> <span class="nx">possible</span> <span class="nx">numeric</span> <span class="nx">values</span> <span class="p">(</span><span class="kd">with</span> <span class="nx">their</span> <span class="nx">names</span><span class="p">)</span> <span class="nx">and</span> <span class="nx">access</span> <span class="nx">them</span> <span class="kd">with</span> <span class="nx">object</span><span class="o">-</span><span class="nx">like</span> <span class="nx">dot</span> <span class="nx">notation</span><span class="p">.</span>
+<span class="c1">// Enum</span>
+<span class="kr">enum</span> <span class="nx">Fruit</span> <span class="p">{</span>
+<span class="nx">Apple</span><span class="p">,</span>
+<span class="nx">Orange</span><span class="p">,</span>
+<span class="nx">Melon</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="kd">let</span> <span class="nx">f</span><span class="p">:</span> <span class="nx">Fruit</span> <span class="o">=</span> <span class="nx">Fruit</span><span class="p">.</span><span class="nx">Apple</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">f</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">// true</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">f</span> <span class="o">===</span> <span class="nx">Fruit</span><span class="p">.</span><span class="nx">Apple</span><span class="p">)</span> <span class="c1">// true</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">f</span> <span class="o">===</span> <span class="nx">Fruit</span><span class="p">.</span><span class="nx">Orange</span><span class="p">)</span> <span class="c1">// false</span>
+</code></pre></div></div>
+
+<h2 id="more-complex-types-and-typecasting-in-typescript">More complex types and typecasting in typescript</h2>
+
+<p>By now you should be able to create types for primitive declaration. Time to dwell into more types.</p>
+
+<h3 id="object">Object</h3>
+
+<p>There are many ways to declare the type for an object.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Object</span>
+<span class="c1">// 1. object type (Not recommended)</span>
+<span class="c1">// can be used to type anything except number, string, boolean, symbol, null, or undefined.</span>
+<span class="kd">let</span> <span class="nx">someObj</span><span class="p">:</span> <span class="nx">object</span>
+<span class="nx">someObj</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">someNo</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span>
+  <span class="na">someString</span><span class="p">:</span> <span class="dl">'</span><span class="s1">hi there!</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">sayHi</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hi</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">},</span>
+<span class="p">}</span>
+<span class="c1">// valid (these can lead to bugs, that is exactly why this approach is not recommended)</span>
+<span class="nx">someObj</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="nx">someObj</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">another function</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// invalid</span>
+<span class="nx">someObj</span> <span class="o">=</span> <span class="mi">2354</span>
+<span class="c1">// 2. Adhoc object declaration: An actual object like structure describing properties and methods</span>
+<span class="kd">let</span> <span class="nx">anotherObject</span><span class="p">:</span> <span class="p">{</span> <span class="nl">someNo</span><span class="p">:</span> <span class="nx">number</span><span class="p">,</span> <span class="nx">someString</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span> <span class="nx">sayHi</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">void</span> <span class="p">}</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">someNo</span><span class="p">:</span> <span class="mi">345</span><span class="p">,</span>
+  <span class="na">someString</span><span class="p">:</span> <span class="dl">'</span><span class="s1">hi</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">sayHi</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">hi</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">},</span>
+<span class="p">}</span>
+<span class="c1">// invalid</span>
+<span class="nx">anotherObject</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="nx">anotherObject</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">this is also invalid</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">anotherObject</span><span class="p">.</span><span class="nx">somethingNotInType</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Invalid, because the property is not in type</span><span class="dl">'</span>
+<span class="nx">anotherObject</span><span class="p">.</span><span class="nx">someNo</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Invalid, someNo is of type number</span><span class="dl">'</span>
+</code></pre></div></div>
+
+<p>We will learn more ways to type an object in the next sections.</p>
+
+<h3 id="function">Function</h3>
+
+<p>There are many ways to declare (type) a function as well.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Function</span>
+<span class="c1">// 1. Function type (doesn't care about args and return types)</span>
+<span class="kd">let</span> <span class="nx">someTypedFunction</span><span class="p">:</span> <span class="nb">Function</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Any function could have been assigned to this variable</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">someTypedFunction</span> <span class="o">=</span> <span class="p">(</span><span class="nx">a</span><span class="p">:</span> <span class="nx">number</span><span class="p">,</span> <span class="nx">b</span><span class="p">:</span> <span class="nx">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="na">sum</span><span class="p">:</span> <span class="nx">number</span> <span class="o">=</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span>
+  <span class="k">return</span> <span class="nx">sum</span>
+<span class="p">}</span>
+<span class="c1">// valid, because the type doesn't care about the args and return types.</span>
+<span class="nx">someTypedFunction</span><span class="p">()</span>
+<span class="c1">// invalid</span>
+<span class="nx">someTypedFunction</span> <span class="o">=</span> <span class="mi">3545</span>
+<span class="c1">// 2. Explicit (Adhoc) function type declaration</span>
+<span class="c1">// Here, we declare the arguments inside the function declaration parenthesis</span>
+<span class="c1">// Name of the arguments in the declaration and in the types does not have to match</span>
+<span class="c1">// Return type is declared after the fat arrow (=&gt;)</span>
+<span class="c1">// eg: function below takes two argument, both of type number</span>
+<span class="c1">// Returns a number</span>
+<span class="c1">// You can only assign a function which matches this signature</span>
+<span class="kd">let</span> <span class="nx">someAnotherTypeFunction</span><span class="p">:</span> <span class="p">(</span><span class="nx">arg1</span><span class="p">:</span> <span class="nx">number</span><span class="p">,</span> <span class="nx">arg2</span><span class="p">:</span> <span class="nx">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">number</span> <span class="o">=</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span>
+<span class="p">}</span>
+<span class="c1">// valid</span>
+<span class="nx">someAnotherTypeFunction</span><span class="p">(</span><span class="mi">44</span><span class="p">,</span> <span class="mi">22</span><span class="p">)</span>
+<span class="c1">// invalid</span>
+<span class="nx">someAnotherTypeFunction</span><span class="p">(</span><span class="mi">34</span><span class="p">,</span> <span class="dl">'</span><span class="s1">345</span><span class="dl">'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">returnedValue</span><span class="p">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="nx">someAnotherTypeFunction</span><span class="p">(</span><span class="mi">345</span><span class="p">,</span> <span class="mi">346</span><span class="p">)</span>
+<span class="nx">someAnotherTypeFunction</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Invalid, this does not match the type declaration</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// valid</span>
+<span class="c1">// You can always use less parameters then decalared</span>
+<span class="nx">someAnotherTypeFunction</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="mi">3545</span>
+<span class="p">}</span>
+<span class="c1">// Invalid</span>
+<span class="c1">// You cannot use more parameters than declared in the type</span>
+<span class="nx">someAnotherTypeFunction</span> <span class="o">=</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span> <span class="o">+</span> <span class="nx">c</span>
+<span class="p">}</span>
+<span class="c1">// valid</span>
+<span class="nx">someAnotherTypeFunction</span> <span class="o">=</span> <span class="p">(</span><span class="nx">nameDoesNotMatter1</span><span class="p">,</span> <span class="nx">nameDoesNotMatter2</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">nameDoesNotMatter1</span> <span class="o">*</span> <span class="nx">nameDoesNotMatter1</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="class">Class</h3>
+
+<p>Class is a new feature in javascript. To understand the concept of Classes well it requires the understanding of Object-Oriented programming. For now, let’s see a simple class declaration.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Class</span>
+<span class="kd">class</span> <span class="nx">Person</span> <span class="p">{</span>
+  <span class="c1">// property type declaration</span>
+  <span class="nl">name</span><span class="p">:</span> <span class="nx">string</span>
+  <span class="nx">age</span><span class="p">:</span> <span class="nx">number</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="c1">// just like a simple function declaration right?</span>
+  <span class="c1">// But it implicitly returns the instance of the class -- type of class</span>
+  <span class="c1">// the Person in this case</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="nx">number</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// valid</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="nx">age</span>
+    <span class="c1">// invalid, the property type is not declared</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">wow</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">wow!</span><span class="dl">'</span>
+  <span class="p">}</span>
+  <span class="c1">// just like a normal function again</span>
+  <span class="nl">setAge</span><span class="p">:</span> <span class="p">(</span><span class="nx">age</span><span class="p">:</span> <span class="nx">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span> <span class="o">=</span> <span class="p">(</span><span class="nx">age</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="nx">age</span>
+  <span class="p">}</span>
+  <span class="nx">sayHi</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Hi, </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// user2 is a type of Person</span>
+<span class="kd">let</span> <span class="nx">user2</span><span class="p">:</span> <span class="nx">Person</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="dl">'</span><span class="s1">User 2</span><span class="dl">'</span><span class="p">,</span> <span class="mi">34</span><span class="p">)</span>
+<span class="c1">// user1 is also of type Person, implicitly set by the compiler</span>
+<span class="kd">let</span> <span class="nx">user1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="dl">'</span><span class="s1">User 1</span><span class="dl">'</span><span class="p">,</span> <span class="mi">35</span><span class="p">)</span>
+<span class="c1">// invalid</span>
+<span class="nx">user1</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">invalid, users type is Person</span><span class="dl">'</span>
+</code></pre></div></div>
+
+<p>Class is a fairly big concept in typescript. I would recommend you to check out the documentation for classes in typescript official documentation.</p>
+
+<h4 id="type-assertions">Type assertions</h4>
+
+<p>There are times when you will run into scenarios, such as some declaration of typeA needs to be used with some different declaration of typeB.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Type assertions (also referd as typecasting sometimes) ---------</span>
+<span class="kd">const</span> <span class="nx">someUnknownType</span><span class="p">:</span> <span class="nx">unknown</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">I am of type unknown</span><span class="dl">'</span><span class="p">;</span>
+<span class="c1">// inside some block you know that the type of the variable is string</span>
+<span class="c1">// Now even if you know the type complier is still unaware of this</span>
+<span class="c1">// so accessing string methods on the variable is still invalid</span>
+<span class="nx">someUnknownType</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">();</span>
+<span class="c1">// Don't worry, You can still assert the type or tell the compiler that I know what I am doing</span>
+<span class="c1">// type of the varialbe is actually a string</span>
+<span class="c1">// and then you are allowed to access string methods</span>
+<span class="p">(</span><span class="nx">someUnknownType</span> <span class="k">as</span> <span class="nx">string</span><span class="p">).</span><span class="nx">toLowerCase</span><span class="p">();</span>
+<span class="c1">// Here is the syntax for typecasting</span>
+<span class="c1">// 1. as keyword --&gt;  someTypeA as someTypeB</span>
+<span class="c1">// example</span>
+<span class="kd">const</span> <span class="nx">unknownTypeA</span><span class="p">:</span> <span class="nx">unknown</span> <span class="o">=</span> <span class="mi">354</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">someNumberC</span><span class="p">:</span> <span class="nx">number</span> <span class="o">=</span> <span class="nx">unknownTypeA</span> <span class="k">as</span> <span class="nx">number</span><span class="p">;</span>
+<span class="c1">// 2. angular brackets --&gt;  &lt;someTypeB&gt;someTypeA</span>
+<span class="c1">// the syntax above changes the type of someTypeA to someTypeB</span>
+<span class="kd">const</span> <span class="nx">unknowTypeB</span><span class="p">:</span> <span class="nx">unknown</span> <span class="o">=</span> <span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="mi">345</span><span class="p">];</span>
+<span class="kd">const</span> <span class="nx">someArrayType</span><span class="p">:</span> <span class="nx">number</span><span class="p">[]</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">number</span><span class="p">[]</span><span class="o">&gt;</span><span class="nx">unknowTypeB</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Remember all this casting is only happening on the type and not on the actual value. Let’s clear with an example</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">someNumberType</span><span class="p">:</span> <span class="nx">number</span> <span class="o">=</span> <span class="mi">34546</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">someUnknownValue</span><span class="p">:</span> <span class="nx">unknown</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">This is unknown</span><span class="dl">'</span><span class="p">;</span>
+<span class="c1">// vlaue of someUnknownValue is not converted to number, only the type has changed here.</span>
+<span class="nx">someNumberType</span> <span class="o">=</span> <span class="nx">someUnknownValue</span> <span class="k">as</span> <span class="nx">number</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">typeof stil returns string -</span><span class="dl">'</span><span class="p">,</span> <span class="k">typeof</span> <span class="nx">someNumberType</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><strong>This may lead to bugs. This is why assertions are not recommended.</strong></p>
+
+<h2 id="reuse-and-compose-types-with-type-interface-union-and-intersection">Reuse and compose types with Type, Interface, union and Intersection</h2>
+
+<p>You know enough typescript by now to get going. But in real application code, you will have many declarations with the same types. Primitive type declarations are easy just one word, very less chance of two mismatching types. But what about the other types, like the functions or the objects? What if you have 100s of objects of the same type? What if you have many functions receiving the same types of callback functions? Do you declare ad-hoc types everywhere? What if your declarations are messed up somehow?
+<strong>Don’t worry! Typescript has already thought about this. It provides us with the type and interface declarations which can be re-used.</strong></p>
+
+<h3 id="type">Type</h3>
+
+<p>Type keyword allows you to create your own types composing other types.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Type</span>
+<span class="c1">// simplest types</span>
+<span class="nx">type</span> <span class="nx">JustNumber</span> <span class="o">=</span> <span class="nx">number</span>
+<span class="c1">// Now JustNumber can be used as a type</span>
+<span class="c1">// anywhere we refer to JustNumber it will refer to a type assigned to it</span>
+<span class="c1">// number in this example</span>
+<span class="kd">let</span> <span class="nx">someNumberConst</span><span class="p">:</span> <span class="nx">JustNumber</span> <span class="o">=</span> <span class="mi">98798</span>
+<span class="nx">someNumberConst</span> <span class="o">=</span> <span class="mi">3498</span>
+<span class="c1">// invalid</span>
+<span class="nx">someNumberConst</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Invalid, string cannot be assigned to type of JustNumber</span><span class="dl">'</span>
+<span class="c1">// type doesn't has to be this simple. Remember the object declarations</span>
+<span class="c1">// Now the type declaration can be re-used</span>
+<span class="nx">type</span> <span class="nx">SomePerson</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+  <span class="na">age</span><span class="p">:</span> <span class="nx">number</span><span class="p">,</span>
+  <span class="na">favColors</span><span class="p">:</span> <span class="nx">string</span><span class="p">[],</span>
+  <span class="na">sayHi</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="kd">const</span> <span class="nx">person1</span><span class="p">:</span> <span class="nx">SomePerson</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Person 1</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">age</span><span class="p">:</span> <span class="mi">45</span><span class="p">,</span>
+  <span class="na">favColors</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">blue</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">pink</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">purple</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">red</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">black</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">white</span><span class="dl">'</span><span class="p">],</span>
+  <span class="na">sayHi</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">hi</span><span class="dl">'</span><span class="p">),</span>
+<span class="p">}</span>
+<span class="kd">const</span> <span class="nx">person2</span><span class="p">:</span> <span class="nx">SomePerson</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Person 1</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">age</span><span class="p">:</span> <span class="mi">78</span><span class="p">,</span>
+  <span class="na">favColors</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">blue</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">pink</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">purple</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">red</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">black</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">white</span><span class="dl">'</span><span class="p">],</span>
+  <span class="na">sayHi</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">hi</span><span class="dl">'</span><span class="p">),</span>
+<span class="p">}</span>
+<span class="c1">// It is not restricted to only objects. Look at the function declaration below</span>
+<span class="nx">type</span> <span class="nx">BinaryOperatorOnNumber</span> <span class="o">=</span> <span class="p">(</span><span class="nx">a</span><span class="p">:</span> <span class="nx">number</span><span class="p">,</span> <span class="nx">b</span><span class="p">:</span> <span class="nx">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">number</span>
+<span class="kd">const</span> <span class="nx">add</span><span class="p">:</span> <span class="nx">BinaryOperatorOnNumber</span> <span class="o">=</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">a</span> <span class="o">*</span> <span class="nx">b</span>
+<span class="c1">// argument name does not needs to be exact only the type and sequence matters</span>
+<span class="kd">const</span> <span class="nx">multiply</span><span class="p">:</span> <span class="nx">BinaryOperatorOnNumber</span> <span class="o">=</span> <span class="p">(</span><span class="nx">num1</span><span class="p">,</span> <span class="nx">num2</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">num1</span> <span class="o">*</span> <span class="nx">num2</span>
+</code></pre></div></div>
+
+<h3 id="interface">Interface</h3>
+
+<p>Just like the Type, interfaces also allows us to create re-usable types. Interfaces are used to define the structure (type) of variables or values.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Interface</span>
+<span class="c1">// basic syntax</span>
+<span class="c1">// interface interfaceName {</span>
+<span class="c1">// ... properties</span>
+<span class="c1">// }</span>
+<span class="kr">interface</span> <span class="nx">DifferentPerson</span> <span class="p">{</span>
+  <span class="nl">name</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+  <span class="nl">age</span><span class="p">:</span> <span class="nx">number</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kd">const</span> <span class="nx">p3</span><span class="p">:</span> <span class="nx">DifferentPerson</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">p3</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">age</span><span class="p">:</span> <span class="mi">23</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="c1">// interfaces can be extended</span>
+<span class="c1">// the new interface will have new properties defined as well as</span>
+<span class="c1">// properties from the old declarations</span>
+<span class="kr">interface</span> <span class="nx">Teacher</span> <span class="kd">extends</span> <span class="nx">DifferentPerson</span> <span class="p">{</span>
+  <span class="nl">teaches</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// Now Teacher has all of the DifferentPersons fields as well as new fields defined</span>
+<span class="kd">const</span> <span class="nx">t1</span><span class="p">:</span> <span class="nx">Teacher</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Some teacher</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">age</span><span class="p">:</span> <span class="mi">325</span><span class="p">,</span>
+  <span class="na">teaches</span><span class="p">:</span> <span class="dl">'</span><span class="s1">typescript</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="c1">// interface can also be used to define function types</span>
+<span class="c1">// The earlier sum function declaration can be done with intefaces</span>
+<span class="kr">interface</span> <span class="nx">Sum</span> <span class="p">{</span>
+  <span class="p">(</span><span class="nx">a</span><span class="p">:</span> <span class="nx">number</span><span class="p">,</span> <span class="nx">b</span><span class="p">:</span> <span class="nx">number</span><span class="p">):</span> <span class="nx">number</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kd">const</span> <span class="nx">addNumbers</span><span class="p">:</span> <span class="nx">Sum</span> <span class="o">=</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span>
+</code></pre></div></div>
+
+<p>And there are some more ways to reuse code</p>
+
+<h3 id="union">Union</h3>
+
+<p>What if you need to create a type which is one of many already declared. That is where Union types come to help you.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Union</span>
+<span class="c1">// syntax --</span>
+<span class="c1">// typeA | typeB | typeC</span>
+<span class="c1">// As you can see symbol '|' is used to do an union.</span>
+<span class="c1">// a string or a number can be assigned to the variable input</span>
+<span class="kd">let</span> <span class="nx">input</span><span class="p">:</span> <span class="nx">string</span> <span class="o">|</span> <span class="nx">number</span> <span class="o">=</span> <span class="mi">44</span>
+<span class="nx">input</span> <span class="o">=</span> <span class="mi">55</span>
+<span class="nx">input</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">this also valid</span><span class="dl">'</span>
+<span class="c1">// invalid</span>
+<span class="nx">input</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="c1">// the types don't need to be so simple</span>
+<span class="nx">type</span> <span class="nx">A</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">a</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+  <span class="na">b</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="nx">type</span> <span class="nx">B</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">c</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+  <span class="na">d</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="c1">// either a value of type A or B can be assigned to the below declaration</span>
+<span class="nx">type</span> <span class="nx">AOrB</span> <span class="o">=</span> <span class="nx">A</span> <span class="o">|</span> <span class="nx">B</span>
+<span class="kd">const</span> <span class="nx">onlyA</span><span class="p">:</span> <span class="nx">A</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">a</span><span class="p">:</span> <span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">b</span><span class="p">:</span> <span class="dl">'</span><span class="s1">b</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="kd">const</span> <span class="nx">onlyB</span><span class="p">:</span> <span class="nx">B</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">c</span><span class="p">:</span> <span class="dl">'</span><span class="s1">c</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">d</span><span class="p">:</span> <span class="dl">'</span><span class="s1">d</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="kd">let</span> <span class="nx">aOrB</span><span class="p">:</span> <span class="nx">AOrB</span> <span class="o">=</span> <span class="nx">onlyB</span>
+<span class="nx">aOrB</span> <span class="o">=</span> <span class="nx">onlyA</span>
+<span class="c1">// Not valid</span>
+<span class="nx">aOrB</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">notValid</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Yes this is not valid</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="intersection">Intersection</h3>
+
+<p>Intersection combines multiple types into one single type.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Intersection</span>
+<span class="c1">// syntax</span>
+<span class="c1">// typeA &amp; typeB &amp; typeC</span>
+<span class="c1">// '&amp;' symbol is used to combine two types which creates a new type</span>
+<span class="c1">// with all the types of typeA, typeB and typeC combined.</span>
+<span class="nx">type</span> <span class="nx">SomeA</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">a</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="nx">type</span> <span class="nx">SomeB</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">b</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="c1">// Now only a value having all the fields declared in SomeA</span>
+<span class="c1">// and SomeB combined can be assigned to following declaration</span>
+<span class="nx">type</span> <span class="nx">SomeTypeAAndB</span> <span class="o">=</span> <span class="nx">SomeA</span> <span class="o">&amp;</span> <span class="nx">SomeB</span>
+<span class="kd">const</span> <span class="nx">SomeAAndBValue</span><span class="p">:</span> <span class="nx">SomeTypeAAndB</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">a</span><span class="p">:</span> <span class="dl">'</span><span class="s1">This comes from the first declaration</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">b</span><span class="p">:</span> <span class="dl">'</span><span class="s1">This comes from the second declaration</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="c1">// invalid</span>
+<span class="kd">const</span> <span class="nx">oneMore</span><span class="p">:</span> <span class="nx">SomeTypeAAndB</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="c1">// invalid</span>
+  <span class="na">d</span><span class="p">:</span> <span class="dl">'</span><span class="s1">d is not defined in any of two types combined</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="generics">Generics</h3>
+
+<p>Generics are used to defines types without associating the declarations to a specific type. <code class="language-plaintext highlighter-rouge">Array&lt;T&gt;</code> is one of an example of Generics. Here the T denotes a type. Let us implement a type for an array of any of typed type.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Generics</span>
+<span class="c1">// As we know arrays are just object with numbered index and a lenght properties defined (simplified for this example)</span>
+<span class="c1">// We can pass a type T which will be the type of the value on a variable of type CustomArray,</span>
+<span class="c1">// except lenght, lenght is always number</span>
+<span class="kr">interface</span> <span class="nx">CustomArray</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="p">[</span><span class="na">key</span><span class="p">:</span> <span class="nx">number</span><span class="p">]:</span> <span class="nx">T</span><span class="p">;</span>
+  <span class="nl">length</span><span class="p">:</span> <span class="nx">number</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// We can pass any type to the CustomArray and the passed type will act as the type of the elements on</span>
+<span class="c1">// the declared array</span>
+<span class="kd">const</span> <span class="nx">b</span><span class="p">:</span> <span class="nx">CustomArray</span><span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">246</span><span class="p">,</span> <span class="mi">76</span><span class="p">]</span>
+<span class="kd">const</span> <span class="nx">c</span><span class="p">:</span> <span class="nx">CustomArray</span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">allowed</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">allowed</span><span class="dl">'</span><span class="p">]</span>
+</code></pre></div></div>
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<span></span><span></span>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/jekyll-theme-yat/markdown/2022/03/14/test-markdown.html" title="">Learn Typescript in 15 minutes</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --><style type="text/css" media="screen">
+.post-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+</style>
+
+<div class="post-menu">
+  <div class="post-menu-title">TOC</div>
+  <div class="post-menu-content"></div>
+</div>
+
+<script>
+  function generateContent() {
+    var menu = document.querySelector(".post-menu");
+    var menuContent =  menu.querySelector(".post-menu-content");
+    var headings = document.querySelector(".post-content").querySelectorAll("h2, h3, h4, h5, h6");
+
+    // Hide menu when no headings
+    if (headings.length === 0) {
+      return menu.style.display = "none";
+    }
+
+    // Generate post menu
+    var menuHTML = '';
+    for (var i = 0; i < headings.length; i++) {
+      var h = headings[i];
+      menuHTML += (
+        '<li class="h-' + h.tagName.toLowerCase() + '">'
+        + '<a href="#h-' + h.getAttribute('id') + '">' + h.textContent + '</a></li>');
+    }
+
+    menuContent.innerHTML = '<ul>' + menuHTML + '</ul>';
+
+    // The header element
+    var header = document.querySelector('header.site-header');
+
+    function doMenuCollapse(index, over_items) {
+      var items = menuContent.firstChild.children;
+
+      if (over_items == undefined) {
+        over_items = 20;
+      }
+
+      if (items.length < over_items) {
+        return;
+      }
+
+      var activeItem = items[index];
+      var beginItem = activeItem
+      var endItem = activeItem
+      var beginIndex = index;
+      var endIndex = index + 1;
+      while (beginIndex >= 0
+        && !items[beginIndex].classList.contains('h-h2')) {
+        beginIndex -= 1;
+      }
+      while (endIndex < items.length
+        && !items[endIndex].classList.contains('h-h2')) {
+        endIndex += 1;
+      }
+      for (var i = 0; i < beginIndex; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+      for (var i = beginIndex + 1; i < endIndex; i++) {
+        item = items[i]
+        // if (!item.classList.contains('h-h2')) {
+          item.style.display = '';
+        // }
+      }
+      for (var i = endIndex; i < items.length; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+    }
+
+    // Init menu collapsed
+    doMenuCollapse(-1);
+
+    // Active the menu item
+    window.addEventListener('scroll', function (event) {
+      var lastActive = menuContent.querySelector('.active');
+      var changed = true;
+      var activeIndex = -1;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        var h = headings[i];
+        var headingRect = h.getBoundingClientRect();
+        var headerRect = header.getBoundingClientRect();
+        var headerTop = Math.floor(headerRect.top);
+        var headerHeight = Math.floor(headerRect.height);
+        var headerHeight = headerTop + headerHeight + 20;
+        if (headingRect.top <= headerHeight) {
+          var id = 'h-' + h.getAttribute('id');
+          var a = menuContent.querySelector('a[href="#' + id  + '"]');
+          var curActive = a.parentNode;
+          if (curActive) {
+            curActive.classList.add('active');
+            activeIndex = i;
+          }
+          if (lastActive == curActive) {
+            changed = false;
+          }
+          break;
+        }
+      }
+      if (changed) {
+        if (lastActive) {
+          lastActive.classList.remove('active');
+        }
+        doMenuCollapse(activeIndex);
+      }
+      event.preventDefault();
+    });
+  }
+  generateContent();
+</script>
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/jekyll-theme-yat/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div>Nukemedev <span class="copyleft">©</span> 2022-2022</div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="https://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a> and Github pages</div>
+      <div class="footer-col rss-subscribe">Subscribe <a href="/jekyll-theme-yat/feed.xml">via RSS</a>
+</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
